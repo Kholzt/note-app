@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+:root {
+  --main-color: #143d59;
+  --second-color: #f4b41a;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  overflow: hidden;
+}
+
+/* custom form control */
+.form-control {
+  box-shadow: none !important;
+}
+.or-form span {
+  background: white;
+}
+
+.or-form {
+  position: relative;
+}
+.or-form span {
+  position: relative;
+  padding-inline: 7px;
+}
+.or-form::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  background-color: rgb(209, 209, 209);
+}
+.bg-primary {
+  background-color: var(--main-color) !important;
+}
+.sidebar .sidemenu {
+  color: rgb(220, 220, 220);
+  transition: all ease 0.2s;
+}
+.sidebar .sidemenu:hover {
+  color: rgb(244, 244, 244);
+  background-color: #1b4967;
+}
+.sidebar .sidemenu.active {
+  color: rgb(255, 255, 255);
+  background-color: #1d5982;
+  position: relative;
+}
+.sidebar .sidemenu.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: var(--second-color);
+}
+
+/* custom ckeditor style */
+.ck-sticky-panel__content {
+  border: 0 !important;
+}
+.ck-content {
+  border: 1px solid transparent !important;
+  border-top: 1px solid rgb(205, 205, 205) !important;
+  height: 76vh;
+  transition: all 0.3s;
+}
+.ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {
+  box-shadow: none !important;
+  border: 1px solid rgb(205, 205, 205) !important;
+}
+
+/* border custom style */
+.border-dashed {
+  border-style: dashed !important;
+}
+
+.border-dotted {
+  border-style: dotted !important;
+}
+
+.border-double {
+  border-style: double !important;
+}
+
+.border-groove {
+  border-style: groove !important;
+}
+
+.border-ridge {
+  border-style: ridge !important;
+}
+
+.border-inset {
+  border-style: inset !important;
+}
+
+.border-outset {
+  border-style: outset !important;
+}
+
+/* custom scroll */
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #f0f0f0;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.custom-scroll::-webkit-scrollbar-corner {
+  background: #e0e0e0;
+}
+
+/* Remove the dropdown arrow */
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: crimson;
+  color: white !important;
+}
