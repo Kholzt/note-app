@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function SideMenu() {
+const SideMenu: React.FC = () => {
   const { pathname } = useLocation();
   const sideMenu = [
     {
@@ -45,4 +45,6 @@ export default function SideMenu() {
       })}
     </ul>
   );
-}
+};
+
+export default SideMenu;

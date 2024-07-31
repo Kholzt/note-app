@@ -1,11 +1,11 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./../pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import Note from "./../pages/note/Note";
 import Layout from "./../components/Layout";
+import React from "react";
 
-export default function Router() {
+const Router: React.FC = () => {
   return (
     <Routes>
       {/* Rute publik */}
@@ -19,4 +19,5 @@ export default function Router() {
       </Route>
     </Routes>
   );
-}
+};
+export default Router;

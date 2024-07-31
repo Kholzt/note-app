@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 
-export default function Layout() {
+const Layout: React.FC = () => {
   return (
     <div className="d-md-flex">
       <Sidebar />
@@ -11,4 +11,6 @@ export default function Layout() {
       </main>
     </div>
   );
-}
+};
+
+export default Layout;

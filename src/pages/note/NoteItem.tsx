@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { deleteRequest } from "../../utils/services";
-import { Button, Dropdown, DropdownButton } from "react-bootstrap";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useGlobal } from "../../context/GlobalContext";
 
 interface NoteItesmType {

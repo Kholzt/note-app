@@ -1,7 +1,7 @@
 import React from "react";
 import SideMenu from "./SideMenu";
 
-export default function Sidebar() {
+const Sidebar: React.FC = () => {
   return (
     <aside
       className="pt-4 ps-4 bg-primary w-100 vh-100"
@@ -12,4 +12,5 @@ export default function Sidebar() {
       <SideMenu />
     </aside>
   );
-}
+};
+export default Sidebar;

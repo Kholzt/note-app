@@ -6,7 +6,7 @@ import { auth, googleProvider } from "../utils/firebase";
 import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { useAuth } from "../context/AuthContext";
 
-export default function Login() {
+const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState<string | null>(null); // For handling errors
@@ -101,4 +101,6 @@ export default function Login() {
       </Card>
     </Container>
   );
-}
+};
+
+export default Login;

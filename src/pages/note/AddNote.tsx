@@ -1,11 +1,11 @@
-import React from "react";
 import { Button } from "react-bootstrap";
 import { generateId } from "../../utils/helpers";
 import { postRequest } from "../../utils/services";
 import { useNavigate } from "react-router-dom";
 import { useGlobal } from "../../context/GlobalContext";
+import React = require("react");
 
-export default function AddNote() {
+const AddNote: React.FC = () => {
   const { reload, setReload } = useGlobal();
   const navigate = useNavigate();
   const addNew = async () => {
@@ -27,4 +27,6 @@ export default function AddNote() {
       Add New <i className="fa fa-plus"></i>
     </Button>
   );
-}
+};
+
+export default AddNote;

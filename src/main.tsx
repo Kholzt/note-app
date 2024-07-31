@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+import App from "./App";
 import "./index.css";
-import { AuthProvider } from "./context/AuthContext.tsx";
-import { GlobalProvider } from "./context/GlobalContext.tsx";
+import { AuthProvider } from "./context/AuthContext";
+import { GlobalProvider } from "./context/GlobalContext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

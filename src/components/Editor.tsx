@@ -9,7 +9,7 @@ interface EditorProps {
 
 const Editor: React.FC<EditorProps> = ({ initialValue, onChange }) => {
   // Handle changes to the editor content
-  const handleChange = (event: any, editor: any) => {
+  const handleChange = (_: any, editor: any) => {
     const data = editor.getData();
     onChange(data);
   };
