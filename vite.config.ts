@@ -5,7 +5,7 @@ import vitePluginRequire from "vite-plugin-require";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), commonjs(), vitePluginRequire()],
+  plugins: [react(), commonjs(), vitePluginRequire.default()],
   optimizeDeps: {
     exclude: ["js-big-decimal"],
   },
