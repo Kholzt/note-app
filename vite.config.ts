@@ -11,4 +11,7 @@ export default defineConfig({
     host: "0.0.0.0", // Allow access from other devices
     port: 9000, // Optional: specify the port
   },
+  build: {
+    commonjsOptions: { transformMixedEsModules: true }, // Change
+  },
 });
