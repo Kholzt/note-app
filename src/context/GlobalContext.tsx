@@ -11,11 +11,15 @@ import React, {
 interface GlobalContextType {
   reload: boolean;
   setReload: Dispatch<SetStateAction<boolean>>;
+  setShowNavbar: Dispatch<SetStateAction<boolean>>;
+  showNavbar: boolean;
 }
 
 // Nilai default untuk context
 const defaultGlobalContext: GlobalContextType = {
   reload: false,
+  showNavbar: false,
+  setShowNavbar: () => {},
   setReload: () => {},
 };
 
@@ -30,9 +34,12 @@ export const useGlobal = () => {
 // Membuat provider
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [reload, setReload] = useState<boolean>(true);
+  const [showNavbar, setShowNavbar] = useState<boolean>(false);
 
   return (
-    <GlobalContext.Provider value={{ reload, setReload }}>
+    <GlobalContext.Provider
+      value={{ reload, setReload, showNavbar, setShowNavbar }}
+    >
       {children}
     </GlobalContext.Provider>
   );
