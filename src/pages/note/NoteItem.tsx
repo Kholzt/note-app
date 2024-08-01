@@ -29,7 +29,7 @@ const NoteItem: React.FC<NoteItesmType> = ({
     setReload(!reload);
   };
   const editNote = () => {
-    navigate(`notes/${id}?edit=true`);
+    navigate(`/notes/${id}?edit=true`);
   };
 
   const handleDropdown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
