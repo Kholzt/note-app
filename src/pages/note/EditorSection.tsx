@@ -54,14 +54,18 @@ const EditorSection: React.FC<EditorSectionProps> = ({ note, id }) => {
   //if have no records selected
   if (!id) {
     return (
-      <div className="p-4 d-flex align-items-center flex-column justify-content-center w-100">
+      <div
+        className={`${
+          !id && "d-md-flex d-none"
+        } editor p-4 d-flex align-items-center flex-column justify-content-center w-100`}
+      >
         <i className="fa fa-folder-open mb-2 display-1 text-secondary"></i>
         <span className="text-secondary fs-5">choose or make new note</span>
       </div>
     );
   }
   return (
-    <div className="editor p-4 w-100 overflow-auto ">
+    <div className={`editor p-4 w-100 overflow-auto `}>
       <div className="d-flex justify-content-between align-items-center">
         <Form.Control
           ref={autoFocus}

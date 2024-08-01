@@ -141,3 +141,17 @@ body {
   background-color: crimson;
   color: white !important;
 }
+.sidebar-parent {
+  position: relative;
+}
+@media (max-width: 768px) {
+  .sidebar-parent {
+    position: fixed;
+    top: 0;
+    left: -100%;
+  }
+  .note-list {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}

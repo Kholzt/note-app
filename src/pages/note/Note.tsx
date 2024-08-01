@@ -28,6 +28,7 @@ const Note: React.FC = () => {
   }, [reload]);
 
   useEffect(() => {
+    if (!id) return;
     const fetchNotes = async () => {
       const data: any = await getRequest("/notes/" + id);
       setNote(data);

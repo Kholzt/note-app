@@ -22,10 +22,12 @@ interface NoteListProps {
 const NoteList: React.FC<NoteListProps> = ({ notes, loading, idNote = 0 }) => {
   return (
     <div
-      className="note-list bg-light vh-100 border-end d-flex flex-column justify-content-between"
+      className={`note-list bg-light vh-100 border-end d-flex flex-column justify-content-between ${
+        idNote != 0 && "d-md-flex d-none"
+      }`}
       style={{ maxWidth: "450px" }}
     >
-      <div className="note-lists overflow-hidden" style={{ width: "420px" }}>
+      <div className="note-lists overflow-hidden  ">
         {/* Head Note */}
         <div className="d-flex pt-4 ps-4 mb-4 pe-3 justify-content-between align-items-center">
           <h4 className="mb-0">All Note</h4>
