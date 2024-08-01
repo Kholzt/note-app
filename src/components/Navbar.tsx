@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { useGlobal } from "../context/GlobalContext";
 
 export default function Navbar() {
-  const { user }:  = useAuth();
+  const { user } = useAuth();
   const { setShowNavbar, showNavbar } = useGlobal();
   const handleToggle = () => {
     setShowNavbar(!showNavbar);
