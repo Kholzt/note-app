@@ -65,7 +65,10 @@ const NoteItem: React.FC<NoteItesmType> = ({
                 <Dropdown.Item onClick={editNote} className="text-dark">
                   <i className="fa fa-pencil"></i> Edit
                 </Dropdown.Item>
-                <Dropdown.Item onClick={deleteNote} className="text-danger delete">
+                <Dropdown.Item
+                  onClick={deleteNote}
+                  className="text-danger delete"
+                >
                   <i className="fa fa-trash"></i> Delete
                 </Dropdown.Item>
               </DropdownButton>

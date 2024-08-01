@@ -10,7 +10,6 @@
 body {
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
-  overflow: hidden;
 }
 
 /* custom form control */
@@ -69,7 +68,7 @@ body {
 .ck-content {
   border: 1px solid transparent !important;
   border-top: 1px solid rgb(205, 205, 205) !important;
-  height: 76vh;
+  height: calc(100% - 300px);
   transition: all 0.3s;
 }
 .ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {

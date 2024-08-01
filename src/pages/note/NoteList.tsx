@@ -23,24 +23,22 @@ const NoteList: React.FC<NoteListProps> = ({ notes, loading, idNote = 0 }) => {
   const hasIdNote = idNote != 0;
   return (
     <div
-      className={`note-list bg-light vh-100 border-end d-flex flex-column justify-content-between ${
+      className={`note-list bg-light  position-relative border-end d-flex flex-column justify-content-between ${
         hasIdNote && "d-md-flex d-none"
       }`}
-      style={{ maxWidth: "450px", minWidth: "400px" }}
+      style={{ minWidth: "450px", width: "450px", maxWidth: "450px" }}
     >
-      <div className="note-lists overflow-hidden  w-100">
+      <div
+        className="note-lists    w-100  overflow-hidden"
+        style={{ height: "calc(100vh - 60px)" }}
+      >
         {/* Head Note */}
         <div className="d-flex pt-4 ps-4 mb-4 pe-3 justify-content-between align-items-center">
           <h4 className="mb-0">All Note</h4>
-          <Button className="bg-transparent border-0">
-            <i className="fa fa-trash text-secondary"></i>
-          </Button>
+          <AddNote />
         </div>
         {/* List Note */}
-        <ul
-          className="list-unstyled overflow-auto custom-scroll w-100"
-          style={{ height: "83%" }}
-        >
+        <ul className="list-unstyled overflow-auto  custom-scroll w-100 h-100">
           {!loading ? (
             notes.map((note: any, index: number) => {
               const id = note.id;
@@ -65,7 +63,6 @@ const NoteList: React.FC<NoteListProps> = ({ notes, loading, idNote = 0 }) => {
           )}
         </ul>
       </div>
-      <AddNote />
     </div>
   );
 };
