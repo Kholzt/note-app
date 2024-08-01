@@ -3,7 +3,7 @@ import NoteList from "./NoteList";
 import EditorSection from "./EditorSection";
 import { useTitle } from "../../utils/useDocuments";
 import { getRequest } from "../../utils/services";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useGlobal } from "../../context/GlobalContext";
 
 const Note: React.FC = () => {
@@ -11,8 +11,10 @@ const Note: React.FC = () => {
   const [note, setNote] = useState<any>({});
   const [loading, setLoading] = useState(true);
   const { reload } = useGlobal();
-  useTitle("Note");
   const { id } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const isEdit = !!searchParams.get("edit");
+  useTitle("Note");
   useEffect(() => {
     setLoading(true);
     const fetchAllNotes = async () => {
@@ -41,7 +43,7 @@ const Note: React.FC = () => {
     <>
       <div className="d-flex ">
         <NoteList loading={loading} idNote={id} notes={notes} />
-        <EditorSection id={id} note={note} />
+        <EditorSection isEdit={isEdit} id={id} note={note} />
       </div>
     </>
   );

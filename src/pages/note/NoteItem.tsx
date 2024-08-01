@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { deleteRequest } from "../../utils/services";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useGlobal } from "../../context/GlobalContext";
@@ -22,9 +22,14 @@ const NoteItem: React.FC<NoteItesmType> = ({
   isActive,
 }) => {
   const { reload, setReload } = useGlobal();
+  const navigate = useNavigate();
+
   const deleteNote = async () => {
     await deleteRequest("/notes/" + id);
     setReload(!reload);
+  };
+  const editNote = () => {
+    navigate("?edit=true");
   };
 
   const handleDropdown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -57,7 +62,10 @@ const NoteItem: React.FC<NoteItesmType> = ({
                 id={`dropdown-${id}`}
                 title={<i className="fa-solid fa-ellipsis text-dark"></i>}
               >
-                <Dropdown.Item onClick={deleteNote} className="text-danger">
+                <Dropdown.Item onClick={editNote} className="text-dark">
+                  <i className="fa fa-pencil"></i> Edit
+                </Dropdown.Item>
+                <Dropdown.Item onClick={deleteNote} className="text-danger delete">
                   <i className="fa fa-trash"></i> Delete
                 </Dropdown.Item>
               </DropdownButton>

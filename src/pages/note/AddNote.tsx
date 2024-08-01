@@ -8,6 +8,7 @@ import React = require("react");
 const AddNote: React.FC = () => {
   const { reload, setReload } = useGlobal();
   const navigate = useNavigate();
+
   const addNew = async () => {
     const id = generateId();
     await postRequest("notes/" + id, {
@@ -16,7 +17,7 @@ const AddNote: React.FC = () => {
       date: new Date().toISOString(),
     });
     setReload(!reload);
-    navigate(`/notes/${id}`);
+    navigate(`/notes/${id}?edit=true`);
   };
   return (
     <Button

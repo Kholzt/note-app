@@ -20,10 +20,11 @@ interface NoteListProps {
 }
 
 const NoteList: React.FC<NoteListProps> = ({ notes, loading, idNote = 0 }) => {
+  const hasIdNote = idNote != 0;
   return (
     <div
       className={`note-list bg-light vh-100 border-end d-flex flex-column justify-content-between ${
-        idNote != 0 && "d-md-flex d-none"
+        hasIdNote && "d-md-flex d-none"
       }`}
       style={{ maxWidth: "450px", minWidth: "400px" }}
     >

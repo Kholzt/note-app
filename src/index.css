@@ -136,9 +136,14 @@ body {
   display: none;
 }
 
+.dropdown-item.active.delete,
+.dropdown-item.delete:active {
+  background-color: crimson;
+  color: white !important;
+}
 .dropdown-item.active,
 .dropdown-item:active {
-  background-color: crimson;
+  background-color: var(--main-color);
   color: white !important;
 }
 .sidebar-parent {
