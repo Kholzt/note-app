@@ -65,7 +65,7 @@ const EditorSection: React.FC<EditorSectionProps> = ({ note, id }) => {
     );
   }
   return (
-    <div className={`editor p-4 w-100 overflow-auto `}>
+    <div className={`editor p-md-4 p-2 w-100 overflow-auto `}>
       <div className="d-flex justify-content-between align-items-center">
         <Form.Control
           ref={autoFocus}

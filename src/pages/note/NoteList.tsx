@@ -27,7 +27,7 @@ const NoteList: React.FC<NoteListProps> = ({ notes, loading, idNote = 0 }) => {
       }`}
       style={{ maxWidth: "450px" }}
     >
-      <div className="note-lists overflow-hidden  ">
+      <div className="note-lists overflow-hidden  w-100">
         {/* Head Note */}
         <div className="d-flex pt-4 ps-4 mb-4 pe-3 justify-content-between align-items-center">
           <h4 className="mb-0">All Note</h4>
