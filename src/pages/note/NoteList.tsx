@@ -25,7 +25,7 @@ const NoteList: React.FC<NoteListProps> = ({ notes, loading, idNote = 0 }) => {
       className={`note-list bg-light vh-100 border-end d-flex flex-column justify-content-between ${
         idNote != 0 && "d-md-flex d-none"
       }`}
-      style={{ maxWidth: "450px" }}
+      style={{ maxWidth: "450px", minWidth: "400px" }}
     >
       <div className="note-lists overflow-hidden  w-100">
         {/* Head Note */}
@@ -37,7 +37,7 @@ const NoteList: React.FC<NoteListProps> = ({ notes, loading, idNote = 0 }) => {
         </div>
         {/* List Note */}
         <ul
-          className="list-unstyled overflow-auto custom-scroll "
+          className="list-unstyled overflow-auto custom-scroll w-100"
           style={{ height: "83%" }}
         >
           {!loading ? (
