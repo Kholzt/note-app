@@ -29,7 +29,6 @@ const NoteItem: React.FC<NoteItesmType> = ({
 
   const handleDropdown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
-    e.stopPropagation();
   };
   return (
     <li id={"note" + id}>
@@ -50,8 +49,9 @@ const NoteItem: React.FC<NoteItesmType> = ({
             </p>
           </div>
           <div className="col-4 text-end">
-            <Dropdown onClick={handleDropdown}>
+            <Dropdown>
               <DropdownButton
+                onClick={handleDropdown}
                 className="bg-transparent py-0 border-0 dropdown-toggle"
                 variant="link"
                 id={`dropdown-${id}`}
