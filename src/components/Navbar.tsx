@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
 import { useGlobal } from "../context/GlobalContext";
+import { useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const { user }: { user: any } = useAuth();
   const { setShowNavbar, showNavbar } = useGlobal();
+  const location = useLocation();
+
+  useEffect(() => {
+    setShowNavbar(false);
+  }, [location.pathname]);
+
   const handleToggle = () => {
     setShowNavbar(!showNavbar);
   };

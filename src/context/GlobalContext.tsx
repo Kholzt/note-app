@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import React, {
   createContext,
   useContext,
@@ -6,7 +5,6 @@ import React, {
   Dispatch,
   SetStateAction,
   ReactNode,
-  useEffect,
 } from "react";
 
 // Definisikan tipe untuk context
@@ -37,10 +35,7 @@ export const useGlobal = () => {
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [reload, setReload] = useState<boolean>(true);
   const [showNavbar, setShowNavbar] = useState<boolean>(false);
-  const location = useLocation();
-  useEffect(() => {
-    setShowNavbar(false);
-  }, [location.pathname]);
+
   return (
     <GlobalContext.Provider
       value={{ reload, setReload, showNavbar, setShowNavbar }}
