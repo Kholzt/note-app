@@ -23,14 +23,14 @@ const NoteList: React.FC<NoteListProps> = ({ notes, loading, idNote = 0 }) => {
   const hasIdNote = idNote != 0;
   return (
     <div
-      className={`note-list bg-light  position-relative border-end d-flex flex-column justify-content-between ${
+      className={`note-list bg-light   border-end d-flex flex-column justify-content-between ${
         hasIdNote && "d-md-flex d-none"
       }`}
       style={{ minWidth: "450px", width: "450px", maxWidth: "450px" }}
     >
       <div
-        className="note-lists    w-100  overflow-hidden"
-        style={{ height: "calc(100vh - 60px)" }}
+        className="note-lists position-sticky    w-100  overflow-hidden"
+        style={{ height: "calc(100vh - 60px)", top: "60px" }}
       >
         {/* Head Note */}
         <div className="d-flex pt-4 ps-4 mb-4 pe-3 justify-content-between align-items-center">

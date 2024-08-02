@@ -17,7 +17,7 @@ export default function Navbar() {
     setShowNavbar(!showNavbar);
   };
   return (
-    <div className="border-bottom py-2 px-2 d-flex justify-content-between align-items-center">
+    <div className="border-bottom position-sticky top-0 bg-white z-3 py-2 px-2 d-flex justify-content-between align-items-center">
       <Button
         onClick={handleToggle}
         className="bg-transparent border-0 text-dark"

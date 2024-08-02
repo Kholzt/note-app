@@ -10,7 +10,7 @@ const Sidebar: React.FC = () => {
   };
   return (
     <aside
-      className={`pt-4 ps-md-4 bg-primary   w-100 sidebar-parent vh-100 ${
+      className={`pt-4 ps-md-4 bg-primary  position-md-sticky top-md-0  w-100 sidebar-parent vh-100 ${
         showNavbar && "active"
       }`}
     >
