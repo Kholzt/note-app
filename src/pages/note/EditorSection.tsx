@@ -29,7 +29,8 @@ const EditorSection: React.FC<EditorSectionProps> = ({
   }, [note]);
 
   const autoFocus = useCallback(
-    (el: HTMLInputElement) => (el ? el.focus() : null),
+    (el: HTMLInputElement | HTMLTextAreaElement | null) =>
+      el ? el.focus() : null,
     [title]
   );
   useEffect(() => {
