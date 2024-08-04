@@ -1,4 +1,11 @@
-import { equalTo, orderByChild, query, remove } from "firebase/database";
+import {
+  DatabaseReference,
+  Query,
+  equalTo,
+  orderByChild,
+  query,
+  remove,
+} from "firebase/database";
 import { database, ref, set, get, child } from "./firebase";
 
 const postRequest = async (url: string, data: object) => {
@@ -36,12 +43,12 @@ const getSingleRequest = async (
   filters: Record<string, any> = {}
 ) => {
   try {
-    let dataQuery = ref(database, url);
+    let dataQuery: Query = ref(database, url);
 
     // Build the query with multi-field filtering
     Object.keys(filters).forEach((field) => {
       dataQuery = query(
-        dataQuery,
+        dataQuery as DatabaseReference,
         orderByChild(field),
         equalTo(filters[field])
       );
