@@ -64,9 +64,9 @@ const EditorSection: React.FC<EditorSectionProps> = ({
       <div
         className={`${
           hasId && "d-md-flex d-none"
-        } editor p-4 d-flex align-items-center flex-column justify-content-center w-100`}
+        } editor p-4 d-flex align-items-center bg-white flex-column justify-content-center w-100`}
       >
-        <i className="fa fa-folder-open mb-2 display-1 text-secondary"></i>
+        <i className="fa fa-folder-open mb-2 display-1 text-primary"></i>
         <span className="text-secondary fs-5">choose or add new note</span>
       </div>
     );
@@ -76,11 +76,12 @@ const EditorSection: React.FC<EditorSectionProps> = ({
   if (isEdit) {
     return (
       <div className={`editor p-md-4 p-2 w-100 overflow-auto `}>
-        <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-between bg-white align-items-center">
           <Form.Control
             ref={autoFocus}
             className="py-2 mb-2 border-0 fs-2"
-            type="text"
+            as="textarea"
+            rows={3}
             placeholder="Note title"
             required
             value={title}

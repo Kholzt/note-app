@@ -4,6 +4,7 @@
 
 :root {
   --main-color: #143d59;
+  --main-color-hover: #1f4f6f;
   --second-color: #f4b41a;
 }
 
@@ -38,6 +39,22 @@ body {
 .bg-primary {
   background-color: var(--main-color) !important;
 }
+.btn-primary {
+  background-color: var(--main-color);
+  border: none;
+}
+.btn-primary:hover {
+  background-color: var(--main-color-hover);
+}
+.text-primary {
+  color: var(--main-color) !important;
+}
+.bg-2 {
+  background-color: var(--second-color) !important;
+}
+.text-2 {
+  color: var(--second-color) !important;
+}
 .sidebar .sidemenu {
   color: rgb(220, 220, 220);
   transition: all ease 0.2s;
@@ -50,6 +67,7 @@ body {
   color: rgb(255, 255, 255);
   background-color: #1d5982;
   position: relative;
+  overflow: hidden;
 }
 .sidebar .sidemenu.active::before {
   content: "";
@@ -57,7 +75,7 @@ body {
   left: 0;
   top: 0;
   height: 100%;
-  width: 3px;
+  width: 5px;
   background-color: var(--second-color);
 }
 
@@ -150,6 +168,7 @@ body {
   max-width: 300px;
   transition: all 0.2s ease;
 }
+
 @media (max-width: 768px) {
   .sidebar-parent {
     width: 100%;

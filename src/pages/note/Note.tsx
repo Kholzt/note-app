@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NoteList from "./NoteList";
 import EditorSection from "./EditorSection";
 import { useTitle } from "../../utils/useDocuments";
-import { getRequest } from "../../utils/services";
+import { getRequest, getSingleRequest } from "../../utils/services";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useGlobal } from "../../context/GlobalContext";
 
@@ -32,7 +32,7 @@ const Note: React.FC = () => {
   useEffect(() => {
     if (!id) return;
     const fetchNotes = async () => {
-      const data: any = await getRequest("/notes/" + id);
+      const data: any = await getSingleRequest("/notes/" + id);
       setNote(data);
       document.title = data?.title + " | Note Me";
     };

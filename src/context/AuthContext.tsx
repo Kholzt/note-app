@@ -10,6 +10,8 @@ import React, {
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import Loading from "./../components/Loading";
+import { getSingleRequest, postRequest } from "../utils/services";
+import { generateId } from "../utils/helpers";
 
 // Definisikan tipe untuk context
 interface AuthContextType {
@@ -40,6 +42,23 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
+        const email = user?.email;
+        const userData = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+          phone: user.phoneNumber,
+        };
+        const id = generateId();
+        const filter = {
+          email: email,
+        };
+        getSingleRequest("/users", filter).then((data) => {
+          if (!data) {
+            postRequest(`/users/${id}`, userData);
+          }
+        });
+        console.log("test");
         setUser(user);
       } else {
       }

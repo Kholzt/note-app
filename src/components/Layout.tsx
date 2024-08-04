@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 const Layout: React.FC = () => {
   return (
-    <div className="d-md-flex">
+    <div className="d-md-flex bg-light">
       <Sidebar />
       <main className="w-100 vh-100 overflow-auto">
         <Navbar />

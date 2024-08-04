@@ -22,7 +22,7 @@ const AddNote: React.FC = () => {
   return (
     <Button
       onClick={addNew}
-      className="bg-white text-center text-secondary border-0"
+      className="bg-primary  text-center text-white border-0"
     >
       <i className="fa fa-plus"></i>
     </Button>

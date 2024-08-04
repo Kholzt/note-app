@@ -1,4 +1,4 @@
-import { remove } from "firebase/database";
+import { equalTo, orderByChild, query, remove } from "firebase/database";
 import { database, ref, set, get, child } from "./firebase";
 
 const postRequest = async (url: string, data: object) => {
@@ -31,9 +31,39 @@ const getRequest = async (url: string) => {
   }
 };
 
-const deleteRequest = async (url: string) => {
+const getSingleRequest = async (
+  url: string,
+  filters: Record<string, any> = {}
+) => {
   try {
-    const noteRef = ref(database, url);
+    let dataQuery = ref(database, url);
+
+    // Build the query with multi-field filtering
+    Object.keys(filters).forEach((field) => {
+      dataQuery = query(
+        dataQuery,
+        orderByChild(field),
+        equalTo(filters[field])
+      );
+    });
+
+    const snapshot = await get(dataQuery);
+
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      return data;
+    } else {
+      return null;
+    }
+  } catch (e) {
+    console.error("Error fetching data:", e);
+    return null;
+  }
+};
+
+const deleteRequest = async (url: string, id: string) => {
+  try {
+    const noteRef = ref(database, `${url}/${id}`);
     await remove(noteRef);
     console.log("Note deleted successfully");
   } catch (error) {
@@ -41,4 +71,4 @@ const deleteRequest = async (url: string) => {
   }
 };
 
-export { getRequest, postRequest, deleteRequest };
+export { getRequest, postRequest, deleteRequest, getSingleRequest };

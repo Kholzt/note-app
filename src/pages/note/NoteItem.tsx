@@ -25,7 +25,7 @@ const NoteItem: React.FC<NoteItesmType> = ({
   const navigate = useNavigate();
 
   const deleteNote = async () => {
-    await deleteRequest("/notes/" + id);
+    await deleteRequest("/notes", id);
     setReload(!reload);
   };
   const editNote = () => {
@@ -54,7 +54,7 @@ const NoteItem: React.FC<NoteItesmType> = ({
             </p>
           </div>
           <div className="col-4 text-end">
-            <Dropdown>
+            <Dropdown style={{ top: "-20px" }}>
               <DropdownButton
                 onClick={handleDropdown}
                 className="bg-transparent py-0 border-0 dropdown-toggle"

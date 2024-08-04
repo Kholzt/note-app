@@ -3,7 +3,21 @@ const generateId = (length: number = 10): string => {
     Math.floor(Math.random() * 16).toString(16)
   ).join("");
 };
-
+const formatDate = (date: string): string => {
+  try {
+    const dateObj = new Date(date);
+    if (isNaN(dateObj.getTime())) {
+      throw new Error("Invalid Date");
+    }
+    const day = String(dateObj.getDate()).padStart(2, "0");
+    const month = String(dateObj.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+    const year = dateObj.getFullYear();
+    return `${day}/${month}/${year}`;
+  } catch (error) {
+    console.error("Invalid date format", error);
+    return "";
+  }
+};
 const getRelativeTime = (dateString: string) => {
   const now = new Date();
   const date = new Date(dateString);
@@ -33,4 +47,4 @@ const extractTextFromHTML = (html: string): string => {
   tempDiv.innerHTML = html;
   return tempDiv.textContent || "";
 };
-export { generateId, getRelativeTime, extractTextFromHTML };
+export { generateId, getRelativeTime, extractTextFromHTML, formatDate };

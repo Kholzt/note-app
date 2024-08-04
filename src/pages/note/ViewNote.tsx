@@ -10,7 +10,7 @@ interface props {
 }
 const ViewNote: React.FC<props> = ({ note }) => {
   return (
-    <div className="p-4  w-100 ">
+    <div className="p-4  w-100 bg-white">
       <div className="d-flex align-items-center justify-content-between">
         {" "}
         <h2>{note.title}</h2>

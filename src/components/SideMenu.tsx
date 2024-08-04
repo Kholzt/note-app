@@ -17,6 +17,12 @@ const SideMenu: React.FC = () => {
       isActive: pathname.includes("/notes"),
     },
     {
+      path: "/projects",
+      name: "Projects",
+      icon: "fa-list-check",
+      isActive: pathname.includes("/projects"),
+    },
+    {
       path: "/setting",
       name: "Setting",
       icon: "fa-sliders",
@@ -24,7 +30,7 @@ const SideMenu: React.FC = () => {
     },
   ];
   return (
-    <ul className="list-unstyled sidebar">
+    <ul className="list-unstyled sidebar ">
       {sideMenu.map((menu, i) => {
         return (
           <li key={i}>
@@ -32,7 +38,7 @@ const SideMenu: React.FC = () => {
               to={menu.path}
               className={`${
                 menu.isActive && "active"
-              } py-2 d-block text-decoration-none ps-3 sidemenu`}
+              } py-2 d-block text-decoration-none rounded-start ps-3 sidemenu`}
             >
               <i
                 style={{ width: "20px", height: "20px" }}
