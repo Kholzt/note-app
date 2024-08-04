@@ -41,7 +41,7 @@ const Note: React.FC = () => {
 
   return (
     <>
-      <div className="d-flex ">
+      <div className="d-flex flex-grow-1">
         <NoteList loading={loading} idNote={id} notes={notes} />
         <EditorSection isEdit={isEdit} id={id} note={note} />
       </div>

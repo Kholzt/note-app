@@ -6,7 +6,7 @@ const Layout: React.FC = () => {
   return (
     <div className="d-md-flex bg-light">
       <Sidebar />
-      <main className="w-100 vh-100 overflow-auto">
+      <main className="w-100 vh-100 overflow-auto d-flex flex-column">
         <Navbar />
         <Outlet />
       </main>

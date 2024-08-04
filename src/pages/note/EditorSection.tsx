@@ -23,8 +23,8 @@ const EditorSection: React.FC<EditorSectionProps> = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTitle(note.title);
-    setContent(note.content);
+    setTitle(note?.title);
+    setContent(note?.content);
     document.querySelector(".ck-content")?.classList?.add("custom-scroll");
   }, [note]);
 
@@ -76,13 +76,12 @@ const EditorSection: React.FC<EditorSectionProps> = ({
   //if note is edit
   if (isEdit) {
     return (
-      <div className={`editor p-md-4 p-2 w-100 overflow-auto `}>
-        <div className="d-flex justify-content-between bg-white align-items-center">
+      <div className={`editor p-md-4 p-2 w-100 bg-white overflow-auto `}>
+        <div className="d-flex justify-content-between  align-items-center">
           <Form.Control
             ref={autoFocus}
+            type="text"
             className="py-2 mb-2 border-0 fs-2"
-            as="textarea"
-            rows={3}
             placeholder="Note title"
             required
             value={title}

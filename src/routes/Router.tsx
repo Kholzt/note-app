@@ -5,6 +5,7 @@ import Note from "./../pages/note/Note";
 import Layout from "./../components/Layout";
 import React from "react";
 import Project from "./../pages/project/Project";
+import ProjectDetail from "./../pages/project/project_detail/ProjectDetail";
 
 const Router: React.FC = () => {
   return (
@@ -17,7 +18,7 @@ const Router: React.FC = () => {
           <Route path="/notes" element={<Note />} />
           <Route path="/notes/:id" element={<Note />} />
           <Route path="/projects" element={<Project />} />
-          <Route path="/projects/:id" element={<Note />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
         </Route>
       </Route>
     </Routes>

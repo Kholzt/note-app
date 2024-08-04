@@ -1,6 +1,7 @@
 import React from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
 
 interface EditorProps {
   initialValue: string; // Asumsi data editor berupa string
@@ -41,6 +42,7 @@ const Editor: React.FC<EditorProps> = ({ initialValue, onChange }) => {
           shouldNotGroupWhenFull: true,
         },
         language: "en",
+        // plugins: [CodeBlock], // Include CodeBlock plugin
       }}
     />
   );
