@@ -54,7 +54,7 @@ const NoteItem: React.FC<NoteItesmType> = ({
             </p>
           </div>
           <div className="col-4 text-end">
-            <Dropdown style={{ top: "-20px" }}>
+            <Dropdown style={{ top: "-17px" }}>
               <DropdownButton
                 onClick={handleDropdown}
                 className="bg-transparent py-0 border-0 dropdown-toggle"
@@ -67,7 +67,7 @@ const NoteItem: React.FC<NoteItesmType> = ({
                 </Dropdown.Item>
                 <Dropdown.Item
                   onClick={deleteNote}
-                  className="text-danger delete"
+                  className=" dropdown-danger"
                 >
                   <i className="fa fa-trash"></i> Delete
                 </Dropdown.Item>

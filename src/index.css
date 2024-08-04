@@ -7,7 +7,11 @@
   --main-color-hover: #1f4f6f;
   --second-color: #f4b41a;
 }
-
+html,
+body,
+#root {
+  height: 100%;
+}
 body {
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
@@ -167,6 +171,27 @@ body {
   position: relative;
   max-width: 300px;
   transition: all 0.2s ease;
+}
+.dropdown-item {
+  margin-inline: 7px;
+  max-width: calc(100% - 14px);
+  border-radius: 4px;
+}
+.dropdown-danger {
+  background-color: #dc3545;
+  color: white;
+}
+.dropdown-danger:hover {
+  background-color: #c02635;
+  color: white;
+}
+
+.truncate-two-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 768px) {
