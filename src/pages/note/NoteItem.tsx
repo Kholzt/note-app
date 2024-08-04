@@ -6,7 +6,7 @@ import { useGlobal } from "../../context/GlobalContext";
 
 interface NoteItesmType {
   index: number;
-  id: number;
+  id: string;
   title: string;
   content: string;
   date: string;
