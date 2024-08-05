@@ -133,6 +133,20 @@ body {
   height: 8px;
   background-color: #f0f0f0;
 }
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge */
+.scroll-hidden {
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scroll-hidden {
+  scrollbar-width: none;
+}
 
 .custom-scroll::-webkit-scrollbar-track {
   background: #f5f5f5;

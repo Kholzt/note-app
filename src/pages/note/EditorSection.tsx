@@ -76,25 +76,29 @@ const EditorSection: React.FC<EditorSectionProps> = ({
   //if note is edit
   if (isEdit) {
     return (
-      <div className={`editor p-md-4 p-2 w-100 bg-white overflow-auto `}>
-        <div className="d-flex justify-content-between  align-items-center">
-          <Form.Control
-            ref={autoFocus}
-            type="text"
-            className="py-2 mb-2 border-0 fs-2"
-            placeholder="Note title"
-            required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+      <div
+        className={`editor  w-100 bg-white overflow-auto scroll-hidden position-relative`}
+      >
+        <div className="position-absolute p-md-4 p-2 h-100 w-100 top-0 left-0  right-0 bottom-0">
+          <div className="d-flex justify-content-between  align-items-center">
+            <Form.Control
+              ref={autoFocus}
+              type="text"
+              className="py-2 mb-2 border-0 fs-2"
+              placeholder="Note title"
+              required
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <Button onClick={closeNote}>
+              <i className="fa fa-close"></i>
+            </Button>
+          </div>
+          <EditorComponent
+            onChange={(e: string) => setContent(e)}
+            initialValue={content}
           />
-          <Button onClick={closeNote}>
-            <i className="fa fa-close"></i>
-          </Button>
         </div>
-        <EditorComponent
-          onChange={(e: string) => setContent(e)}
-          initialValue={content}
-        />
       </div>
     );
   }
