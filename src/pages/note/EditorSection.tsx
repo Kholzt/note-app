@@ -6,6 +6,8 @@ import { extractTextFromHTML } from "../../utils/helpers";
 import { useNavigate } from "react-router-dom";
 import ViewNote from "./ViewNote";
 import NoteModel from "../../models/NoteModel";
+import { useGlobal } from "../../context/GlobalContext";
+import { useAuth } from "../../context/AuthContext";
 
 interface EditorSectionProps {
   note: any;
@@ -22,11 +24,13 @@ const EditorSection: React.FC<EditorSectionProps> = ({
   const [content, setContent] = useState("");
   const [firstLoad, setFirstLoad] = useState(true);
   const navigate = useNavigate();
+  const { socket } = useGlobal();
+  const { user }: any = useAuth();
   const noteModel = new NoteModel();
 
   useEffect(() => {
-    setTitle(note?.title);
-    setContent(note?.content);
+    setTitle(note?.title ?? "");
+    setContent(note?.content ?? "");
     document.querySelector(".ck-content")?.classList?.add("custom-scroll");
   }, [note]);
 
@@ -46,6 +50,7 @@ const EditorSection: React.FC<EditorSectionProps> = ({
         content,
         date: note.date,
       };
+
       await noteModel.updateNote(id, data);
       // update the latest record to note list
       let titleNoteList = document.querySelector(`#note${id} .note-title`);
@@ -53,6 +58,7 @@ const EditorSection: React.FC<EditorSectionProps> = ({
       if (titleNoteList) titleNoteList.textContent = title;
       if (contentNoteList)
         contentNoteList.textContent = extractTextFromHTML(content);
+      // if (socket) socket.emit("addNote", user.id);
     };
     updateNote();
   }, [title, content]);

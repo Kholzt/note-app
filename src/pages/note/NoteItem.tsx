@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { deleteRequest } from "../../utils/services";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useGlobal } from "../../context/GlobalContext";
+import { useAuth } from "../../context/AuthContext";
 
 interface NoteItesmType {
   index: number;
@@ -21,10 +22,12 @@ const NoteItem: React.FC<NoteItesmType> = ({
   date,
   isActive,
 }) => {
-  const { reload, setReload } = useGlobal();
+  const { reload, setReload, socket } = useGlobal();
+  const { user }: any = useAuth();
   const navigate = useNavigate();
 
   const deleteNote = async () => {
+    if (socket) socket.emit("deleteNote", user.id);
     await deleteRequest("/notes", id);
     setReload(!reload);
   };

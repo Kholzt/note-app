@@ -12,6 +12,7 @@ import { auth } from "../utils/firebase";
 import Loading from "./../components/Loading";
 import { getSingleRequest, postRequest } from "../utils/services";
 import { generateId } from "../utils/helpers";
+import { useGlobal } from "./GlobalContext";
 
 // Definisikan tipe untuk context
 interface AuthContextType {
@@ -39,6 +40,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<object | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const { socket } = useGlobal();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -63,13 +65,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         userData.id = id;
         await postRequest(`/users/${id}`, userData);
         setUser(userData);
+        if (socket) socket.emit("privateRoom", userData.id);
+
         localStorage.setItem("user", JSON.stringify(userData));
       } else {
       }
       setLoading(false);
     });
     return () => unsubscribe();
-  }, []);
+  }, [socket]);
   if (loading) {
     return <Loading />;
   }

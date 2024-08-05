@@ -7,6 +7,7 @@ import { useGlobal } from "../../context/GlobalContext";
 import NoteModel from "../../models/NoteModel";
 import Model from "../../models/Model";
 import { useAuth } from "../../context/AuthContext";
+
 const Note: React.FC = () => {
   useTitle("Note");
   const [noteModel, setNoteModel] = useState<Model>(new NoteModel());
@@ -14,7 +15,7 @@ const Note: React.FC = () => {
   const [note, setNote] = useState<any>({});
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
-  const { reload } = useGlobal();
+  const { reload, socket } = useGlobal();
   const { id } = useParams();
   const isEdit = !!searchParams.get("edit");
   const { user }: { user: any } = useAuth();
@@ -24,6 +25,14 @@ const Note: React.FC = () => {
     setNoteModel(new NoteModel());
     setLoading(true);
     fetchAllNotes();
+    if (socket) {
+      socket.on("getNote", fetchAllNotes);
+    }
+    return () => {
+      if (socket) {
+        socket.off("getNote");
+      }
+    };
   }, [reload]);
 
   useEffect(() => {
@@ -37,6 +46,14 @@ const Note: React.FC = () => {
 
   useEffect(() => {
     fetchNotes();
+    if (socket) {
+      socket.on("getNote", fetchNotes);
+    }
+    return () => {
+      if (socket) {
+        socket.off("getNote");
+      }
+    };
   }, [id]);
 
   const fetchAllNotes = async () => {
@@ -62,6 +79,7 @@ const Note: React.FC = () => {
     setNote(data);
     document.title = data?.title + " | Note Me";
   };
+
   return (
     <>
       <div className="d-flex flex-grow-1">
