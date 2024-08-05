@@ -14,9 +14,9 @@ interface BgFormProps {
 }
 
 const bgArray = [
-  "./assets/background3.jpg",
   "./assets/background1.jpg",
   "./assets/background2.jpg",
+  "./assets/background3.jpg",
   "./assets/background4.jpg",
   "./assets/background5.jpg",
   "./assets/background6.jpg",
