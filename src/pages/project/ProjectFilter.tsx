@@ -59,7 +59,7 @@ const ProjectFilter: React.FC<Props> = ({ setFilter }) => {
         <i className="fa fa-filter  text-primary"></i> Filter
       </Dropdown.Toggle>
 
-      <Dropdown.Menu className="mw-100" style={{ width: "500px" }}>
+      <Dropdown.Menu className="dropwodn-filter">
         <Dropdown.ItemText className="fs-5">Filter Project</Dropdown.ItemText>
         <div className="px-3 mb-2">
           <Form.Group>
