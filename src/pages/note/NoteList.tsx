@@ -62,6 +62,11 @@ const NoteList: React.FC<NoteListProps> = ({ notes, loading, idNote = 0 }) => {
             ) : (
               <LoadingData />
             )}
+            {!loading && notes.length == 0 && (
+              <li className="text-center border-top pt-3">
+                Data note tidak ada
+              </li>
+            )}
           </ol>
         </div>
       </div>

@@ -1,23 +1,22 @@
 import { Button } from "react-bootstrap";
-import { generateId } from "../../utils/helpers";
-import { postRequest } from "../../utils/services";
 import { useNavigate } from "react-router-dom";
 import { useGlobal } from "../../context/GlobalContext";
 import React = require("react");
+import NoteModel from "../../models/NoteModel";
 
 const AddNote: React.FC = () => {
   const { reload, setReload } = useGlobal();
   const navigate = useNavigate();
-
   const addNew = async () => {
-    const id = generateId();
-    await postRequest("notes/" + id, {
+    const noteModel = new NoteModel();
+    const data = {
       title: "Note title",
       content: "Detail title",
-      date: new Date().toISOString(),
-    });
+    };
+    const result: any = await noteModel.addNote(data);
+
     setReload(!reload);
-    navigate(`/notes/${id}?edit=true`);
+    navigate(`/notes/${result.id}?edit=true`);
   };
   return (
     <Button

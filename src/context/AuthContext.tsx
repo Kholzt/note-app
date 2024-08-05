@@ -40,26 +40,30 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<object | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         const email = user?.email;
+        let id = generateId();
         const userData = {
+          id: "",
           name: user.displayName,
           email: user.email,
           photo: user.photoURL,
           phone: user.phoneNumber,
         };
-        const id = generateId();
         const filter = {
           email: email,
         };
-        getSingleRequest("/users", filter).then((data) => {
-          if (!data) {
-            postRequest(`/users/${id}`, userData);
+        const existingUser = await getSingleRequest("/users", filter);
+        if (existingUser) {
+          for (const key in existingUser) {
+            id = existingUser[key].id;
           }
-        });
-        console.log("test");
-        setUser(user);
+        }
+        userData.id = id;
+        await postRequest(`/users/${id}`, userData);
+        setUser(userData);
+        localStorage.setItem("user", JSON.stringify(userData));
       } else {
       }
       setLoading(false);

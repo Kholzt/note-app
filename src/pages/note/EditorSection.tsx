@@ -5,6 +5,7 @@ import { postRequest } from "../../utils/services";
 import { extractTextFromHTML } from "../../utils/helpers";
 import { useNavigate } from "react-router-dom";
 import ViewNote from "./ViewNote";
+import NoteModel from "../../models/NoteModel";
 
 interface EditorSectionProps {
   note: any;
@@ -21,6 +22,7 @@ const EditorSection: React.FC<EditorSectionProps> = ({
   const [content, setContent] = useState("");
   const [firstLoad, setFirstLoad] = useState(true);
   const navigate = useNavigate();
+  const noteModel = new NoteModel();
 
   useEffect(() => {
     setTitle(note?.title);
@@ -39,11 +41,12 @@ const EditorSection: React.FC<EditorSectionProps> = ({
       return;
     }
     const updateNote = async () => {
-      await postRequest("notes/" + id, {
+      const data = {
         title,
         content,
         date: note.date,
-      });
+      };
+      await noteModel.updateNote(id, data);
       // update the latest record to note list
       let titleNoteList = document.querySelector(`#note${id} .note-title`);
       let contentNoteList = document.querySelector(`#note${id} .note-content`);

@@ -11,6 +11,7 @@ export default function ProjectDetail() {
   }, []);
   const getProject = async () => {
     const data = await getSingleRequest("/projects/" + id);
+
     setProject(data);
   };
   return (

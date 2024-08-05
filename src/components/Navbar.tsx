@@ -16,7 +16,6 @@ export default function Navbar() {
   const { setShowNavbar, showNavbar } = useGlobal();
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(user);
   useEffect(() => {
     setShowNavbar(false);
   }, [location.pathname]);
@@ -44,19 +43,19 @@ export default function Navbar() {
           className="bg-transparent border-0 text-dark"
           id="dropdown-basic"
         >
-          {user.displayName} <i className="fa fa-caret-down"></i>
+          {user.name} <i className="fa fa-caret-down"></i>
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
           <Dropdown.ItemText className="d-flex gap-2">
             <img
-              src={user.photoURL}
+              src={user.photo}
               alt=""
               style={{ width: "50px", height: "50px" }}
               className="rounded-circle"
             />
             <div className="">
-              <span>{user.displayName}</span>
+              <span>{user.name}</span>
               <p className="m-0" style={{ fontSize: "13px" }}>
                 {user.email}
               </p>
