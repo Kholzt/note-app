@@ -3,12 +3,7 @@ import { Button, Form, InputGroup, Modal, FormGroup } from "react-bootstrap";
 import { generateId } from "../../utils/helpers";
 import { postRequest } from "../../utils/services";
 import { useGlobal } from "../../context/GlobalContext";
-import bg1 from "../../assets/background1.jpg";
-import bg2 from "../../assets/background2.jpg";
-import bg3 from "../../assets/background3.jpg";
-import bg4 from "../../assets/background4.jpg";
-import bg5 from "../../assets/background5.jpg";
-import bg6 from "../../assets/background6.jpg";
+
 interface AddModalProps {
   show: boolean;
   setShow: Dispatch<React.SetStateAction<boolean>>;
@@ -18,7 +13,14 @@ interface BgFormProps {
   setBackground: Dispatch<React.SetStateAction<string>>;
 }
 
-const bgArray = [bg1, bg2, bg3, bg4, bg5, bg6];
+const bgArray = [
+  "./assets/background3.jpg",
+  "./assets/background1.jpg",
+  "./assets/background2.jpg",
+  "./assets/background4.jpg",
+  "./assets/background5.jpg",
+  "./assets/background6.jpg",
+];
 
 const BgForm: React.FC<BgFormProps> = ({ setBackground }) => {
   const [bgActive, setBgActive] = useState<number>(0);
