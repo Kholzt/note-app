@@ -40,7 +40,9 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [showNavbar, setShowNavbar] = useState<boolean>(false);
   const [socket, setSocket] = useState<Socket | null>(null);
   useEffect(() => {
-    const socketIo = io("https://note-app-server-khaki.vercel.app");
+    const urlProduction = "https://note-app-server-khaki.vercel.app";
+    const urlDevelopment = "http://localhost:4000";
+    const socketIo = io(urlProduction);
     socketIo.connect();
     setSocket(socketIo);
     // Cleanup function to disconnect the socket
