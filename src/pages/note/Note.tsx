@@ -9,20 +9,31 @@ import Model from "../../models/Model";
 import { useAuth } from "../../context/AuthContext";
 const Note: React.FC = () => {
   useTitle("Note");
+  const [noteModel, setNoteModel] = useState<Model>(new NoteModel());
   const [notes, setNotes] = useState<any[]>([]);
   const [note, setNote] = useState<any>({});
   const [loading, setLoading] = useState(true);
+  const [searchParams] = useSearchParams();
   const { reload } = useGlobal();
   const { id } = useParams();
-  const [searchParams] = useSearchParams();
   const isEdit = !!searchParams.get("edit");
-  const [noteModel, setNoteModel] = useState<Model>(new NoteModel());
   const { user }: { user: any } = useAuth();
+  const searchKey = (searchParams.get("search") ?? "").toLowerCase();
+
   useEffect(() => {
     setNoteModel(new NoteModel());
     setLoading(true);
     fetchAllNotes();
   }, [reload]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      fetchAllNotes();
+    }, 300);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [searchKey]);
 
   useEffect(() => {
     fetchNotes();
@@ -35,6 +46,12 @@ const Note: React.FC = () => {
         new Date(b.date).getTime() - new Date(a.date).getTime()
     );
     data = data.filter((d: any) => d.user_id == user.id);
+    data = data.filter((d: any) => {
+      if (searchKey) {
+        return d.title.toLowerCase().includes(searchKey);
+      }
+      return true;
+    });
     setNotes(data);
     setLoading(false);
   };
