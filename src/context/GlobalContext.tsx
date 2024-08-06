@@ -40,7 +40,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [showNavbar, setShowNavbar] = useState<boolean>(false);
   const [socket, setSocket] = useState<Socket | null>(null);
   useEffect(() => {
-    const urlProduction = "https://note-app-server-khaki.vercel.app";
+    const urlProduction = "https://note-app-server-c31l.onrender.com";
     const urlDevelopment = "http://localhost:4000";
     const socketIo = io(urlProduction, {
       path: "/socket",
