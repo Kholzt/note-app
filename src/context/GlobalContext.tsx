@@ -43,7 +43,10 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const urlProduction = "https://note-app-server-khaki.vercel.app";
     const urlDevelopment = "http://localhost:4000";
     const socketIo = io(urlProduction, {
-      transports: ["websocket"],
+      path: "/socket",
+      reconnection: true,
+      transports: ["websocket", "polling"],
+      reconnectionAttempts: 5,
     });
     socketIo.connect();
     setSocket(socketIo);
