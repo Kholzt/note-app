@@ -42,7 +42,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const urlProduction = "https://note-app-server-khaki.vercel.app";
     const urlDevelopment = "http://localhost:4000";
-    const socketIo = io(urlDevelopment, {
+    const socketIo = io(urlProduction, {
       transports: ["websocket"],
     });
     socketIo.connect();
