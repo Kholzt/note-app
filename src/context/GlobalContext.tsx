@@ -53,7 +53,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     // Cleanup function to disconnect the socket
     return () => {
       if (socketIo) {
-        socketIo.disconnect();
+        // socketIo.disconnect();
       }
     };
   }, []);
